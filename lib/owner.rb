@@ -62,18 +62,35 @@ class Owner
     self.cats.each {|new_cat| new_cat.mood = "happy"}
   end
 
-  def sell_pets
-    self.dogs.map do |sold_dog| 
-      sold_dog.owner = nil
-      sold_dog.mood = "nervous"
-    end
+  def all_pets 
 
-    self.cats.map do |sold_cat| 
-      sold_cat.owner = nil
-      sold_cat.mood = "nervous"
+    #returns array of this owner's pets (dogs and cats)
+    return self.cats + self.dogs 
+  end 
+
+  def sell_pets
+
+    #changed map to each 
+    # self.dogs.each do |sold_dog| 
+    #   sold_dog.owner = nil
+    #   sold_dog.mood = "nervous"
+    # end
+
+    # self.cats.each do |sold_cat| 
+    #   sold_cat.owner = nil
+    #   sold_cat.mood = "nervous"
+    # end
+
+    #cleaned up methods using an all_pets helper method instead
+    self.all_pets.each do |pet|
+
+      pet.mood = "nervous"
+      pet.owner = nil
     end
 
   end
+
+
 
   def list_pets
 

@@ -46,7 +46,7 @@ class Owner
 
   def buy_cat(name)
     Cat.new(name, self)
-    #how the heck did this work?!
+    #passes self (owner instance) as an argument for the owner 
   end
 
   def buy_dog(name)
@@ -54,11 +54,12 @@ class Owner
   end
 
   def walk_dogs
-    self.dogs.map {|new_dog| new_dog.mood = "happy"}
+    self.dogs.each {|new_dog| new_dog.mood = "happy"}
+    #changed map to each because no need to make and return new array
   end
 
   def feed_cats
-    self.cats.map {|new_cat| new_cat.mood = "happy"}
+    self.cats.each {|new_cat| new_cat.mood = "happy"}
   end
 
   def sell_pets
